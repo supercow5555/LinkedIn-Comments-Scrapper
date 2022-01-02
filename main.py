@@ -11,8 +11,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 ### Enter details here!
 
 # User name and password
-linkedin_username = "........."
-linkedin_password = "........."
+linkedin_username = ".........."
+linkedin_password = ".........."
 
 # Enter post url
 post_url = "https://www.linkedin.com/posts/dragonflyhk_ali-health-er-report-activity-6839475952322449408-Pcc_"              # Example post with 44 commments
@@ -43,7 +43,7 @@ def load_all_comments():
 # def email_extractor(comments):
 #     emails = []
 #     for comment in comments:
-#         email_match = re.findall(r".+\@.+\..+", str(comment))
+#         email_match = re.findall(r".+\@.+\..+", str(comment))             # regex not working
 #         if email_match:
 #             emails.append(email_match)
 #         else:
@@ -110,32 +110,23 @@ load_all_comments()
 
 # Stripping all comments raw
 comments = driver.find_elements_by_class_name("comments-comment-item__main-content")
+all_comments = [i.text.strip() for i in comments]
 
-all_comments = []
-for comment in comments:
-    result = comment.text.strip()
-    all_comments.append(result)
 
 # Extracting names
 names = driver.find_elements_by_class_name("comments-post-meta__name-text")
-all_names = []
-for name in names:
-    result = name.text.strip()
-    all_names.append(result)
+all_names = [i.text.strip() for i in names]
+
 
 # Extracting headlines
 headlines = driver.find_elements_by_class_name("comments-post-meta__headline")
-all_headlines = []
-for headline in headlines:
-    result = headline.text.strip()
-    all_headlines.append(result)
+all_headlines = [i.text.strip() for i in headlines]
 
 # # Extracting profile picture links
 # pictures = driver.find_elements_by_class_name()
 
 # extract from all comments
 all_emails = extract_emails(all_comments)
-
 
 # transfer to csv
 transfer_csv()
