@@ -40,15 +40,8 @@ def load_all_comments():
     except:
         print("already loaded")
 
-# def email_extractor(comments):
-#     emails = []
-#     for comment in comments:
-#         email_match = re.findall(r".+\@.+\..+", str(comment))             # regex not working
-#         if email_match:
-#             emails.append(email_match)
-#         else:
-#             emails.append("-")
-#     return emails
+
+### TODO: Apply list comprehension on extract_emails function
 
 # email extractor
 def extract_emails(all_comments):
@@ -62,9 +55,11 @@ def extract_emails(all_comments):
     return emails
 
 # transfer to csv
-def transfer_csv():
+def transfer_csv(all_names, all_headlines, all_emails, all_comments):
     for name, headline, email, comment in zip(all_names, all_headlines, all_emails, all_comments):
         writer.writerow([name, headline, email, comment.encode("utf-8")])
+
+
 
 
 
@@ -129,7 +124,7 @@ all_headlines = [i.text.strip() for i in headlines]
 all_emails = extract_emails(all_comments)
 
 # transfer to csv
-transfer_csv()
+transfer_csv(all_names, all_headlines, all_emails, all_comments)
 
 # while(True):
 #     pass

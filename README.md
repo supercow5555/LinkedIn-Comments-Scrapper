@@ -4,8 +4,12 @@ How to use:
 1. Enter username, password for linked 
 2. Enter post url 
 
+## Version 1.2
+Changed transfer_csv function
+
 ## Version 1.1
 Added list comprehensions on extracting names, headlines and comments.
+
 
 ### Performance
 This script has been run on 3 different posts, with 37, 44, and 205 comments resepectivly with mostly success.
